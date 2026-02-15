@@ -1,42 +1,45 @@
-# dotfiles #
+# zsh configuration
 
-Everyone has a dotfiles repo, right?  Well this is mine.  It is structured as a
-castle for the [homeshick](https://github.com/andsens/homeshick) tool, which
-allows easy management for dotfile repos.
+My personal [zsh](http://www.zsh.org/) configuration, built up over years of daily use.
 
-## Included Tools ##
-This repo contains dotfiles for the tools I use most often
+## What's Included
 
-### vim ###
-Vim is a great editor.  If you don't know how to use it, then you should
-invest the time to learn.
+This repository contains a modular zsh configuration with:
+- Custom aliases and functions
+- Shell options and environment setup
+- Plugin management and integrations
 
-### Emacs ###
-Most people learn one editor, and it is the one they love for the rest of their
-lives.  But for me, one is not enough.
-[Emacs](http://www.gnu.org/software/emacs/) is the other of the two giants, and
-definitely worth your time to learn.
+## Local Configuration
 
-**NOTE** My emacs configuration is actually stored in another
-[repository](https://github.com/keelerm84/.emacs.d).
+This configuration supports local overrides through two mechanisms, allowing you to extend or customize the configuration without modifying the repository files.
 
-### tmux ###
-A fantastic [terminal multiplexer](http://tmux.sourceforge.net/).  I was an
-avid [GNU Screen](http://www.gnu.org/software/screen/) user for a long time,
-but I have come to appreciate the awesomeness that is tmux.
+### `.zshrc.local`
 
-### zsh ###
-[bash](http://www.gnu.org/software/bash/) is fantastic.  There is no denying
-it.  But I must say, I have come to love [zsh](http://www.zsh.org/).  It's
-quite amazing.
+Create a `~/.zshrc.local` file to add additional configuration that will be sourced after all standard configuration files are loaded.
 
-## Installation ##
-You can quickly install these dotfiles by running the following command:
 ```bash
-$ curl -o- https://raw.githubusercontent.com/keelerm84/dotfiles/main/install.sh | bash
+# Example ~/.zshrc.local
+export MY_CUSTOM_VAR="value"
+alias myalias="my custom command"
 ```
 
-Shortened url:
+### `.zsh.local/` Directory
+
+Create a `~/.zsh.local/` directory with files matching the names of the standard configuration files to extend or override specific modules:
+
 ```bash
-$ curl -Lo- https://bit.ly/3tyU82T | bash
+# Example ~/.zsh.local/aliases.zsh
+alias ll="ls -lah"
+alias gs="git status"
+
+# Example ~/.zsh.local/functions.zsh
+function my_custom_function() {
+    echo "Hello from my local function"
+}
 ```
+
+The `load_file` function automatically sources files from `~/.zsh.local/` after loading the corresponding files from `~/.zsh/`, allowing you to add to or override the standard configuration on a per-file basis.
+
+## Installation
+
+This configuration can be installed using homeshick. Once installed, the zsh configuration will be placed in `~/.zsh`.

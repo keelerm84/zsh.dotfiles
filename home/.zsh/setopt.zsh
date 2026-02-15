@@ -10,7 +10,6 @@ setopt HUP
 ## never ever beep ever
 setopt NO_BEEP
 
-setopt COMPLETE_IN_WORD
 setopt ALWAYS_TO_END
 
 setopt AUTO_CD
