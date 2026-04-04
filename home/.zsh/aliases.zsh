@@ -6,7 +6,7 @@ fi
 
 alias -g @j='| jq "."'
 alias -g @r='| vim -R'
-alias -g @x='| xclip -i -selection clipboard'
+alias -g @x='| wl-copy'
 alias -g @sum='| awk "{s+=\$1} END {print s}"'
 alias -g @avg='| awk "{s+=\$1} END {print s/NR}"'
 
