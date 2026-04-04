@@ -87,6 +87,7 @@ alias gstsp='gst show -p'
 alias gstsu='gsts -u'
 
 alias dpss='docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" | sort -k2'
+alias rmo='rm **/*orig(D)'
 
 alias mutt='TERM=xterm-256color neomutt'
 alias mux=tmuxinator
