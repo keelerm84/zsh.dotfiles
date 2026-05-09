@@ -10,6 +10,19 @@ alias -g @x='| wl-copy'
 alias -g @sum='| awk "{s+=\$1} END {print s}"'
 alias -g @avg='| awk "{s+=\$1} END {print s/NR}"'
 
+alias ad="agent-deck"
+
+# Mirrors ~/.config/tmuxinator/dev.yml naming so agent-deck and tmux sessions
+# stay aligned: bare repos live at <repo>.git/<worktree>, group by <repo>.
+ada() {
+    local name="${PWD:t}"
+    local group="${PWD:h:t}"
+    group="${group%-private.git}"
+    group="${group%.git}"
+    group="${group/./-}"
+    agent-deck add -g "$group" -t "$name" -c claude "$@"
+}
+
 alias l="ls -lhF"
 alias ll="ls -alhF"
 alias tmux='tmux -2 -u'
